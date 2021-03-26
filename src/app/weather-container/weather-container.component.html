@@ -9,13 +9,13 @@
 
 <div class="flex column space-between full-width">
     <div class="top flex column">
-        <label for="weather-search">Search for a city</label>
+        <label for="weather-search">Sök efter en ort</label>
         <input
             #searchInput
             id="weather-search"
             type="text"
             list="location-list"
-            placeholder="E.g Gothenburg"
+            placeholder="T.ex. Göteborg"
             minlength="3"
         />
         <ul id="location-list" *ngIf="locationList$ | async as locations">
@@ -32,8 +32,8 @@
 
     <div class="center" *ngIf="weatherObject$ | async as data">
         <h1>
-            {{ data.current.condition.text }} and
-            {{ data.current.temp_c | asFahrenheit: doConvert }} in
+            {{ data.current.condition.text }} och
+            {{ data.current.temp_c | asFahrenheit: doConvert }} i
             {{ data.location.name }}
         </h1>
         <!--         <h2>{{ data.forecast }}</h2> -->
@@ -51,9 +51,10 @@
         </h3>
 
         <div class="horizontal p-8">
-            <h3>Humidity: {{ data.current.humidity }} %</h3>
+            <h3>Luftfuktighet: {{ data.current.humidity }} %</h3>
             <h3>
-                Windspeed:
+                Vindhastighet:
+                {{ data.current.wind_dir }} -
                 {{
                     asMilesPerHour
                         ? (data.current.wind_kph | asMilesPerHour)
@@ -65,7 +66,9 @@
 </div>
 <div class="center">
     Powered by
-    <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
+    <a href="https://www.weatherapi.com/" target="_blank" title="Weather API"
+        >WeatherAPI.com</a
+    >
 </div>
 
 <!-- min_temp: number;

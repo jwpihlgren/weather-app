@@ -1,9 +1,10 @@
 import { WeatherModel } from '../models/weather.model';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { observable, Observable, of, pipe, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { query } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  private weatherUrl: string = `http://api.weatherapi.com/v1/forecast.json?key=${environment.WEATHER_API_KEY}&q=`;
+  private weatherUrl: string = `http://api.weatherapi.com/v1/forecast.json?key=${environment.WEATHER_API_KEY}&lang=sv&q=`;
   /* private weatherUrl: string = "http://api.weatherapi.com/v1/forecast.json?key=4ef922377fd94497bcd215700210503&q="; */
-  private locationUrl: string = "http://api.weatherapi.com/v1/search.json?key=4ef922377fd94497bcd215700210503&days=5&aqi=no&alerts=yes&q=";
+  private locationUrl: string = "http://api.weatherapi.com/v1/search.json?key=4ef922377fd94497bcd215700210503&lang=sv&days=5&aqi=no&alerts=yes&q=";
   private DEFAULT_LOCATION = "Partille, Vastra Gotaland, Sweden";
 
   getWeather(query: string): Observable<WeatherModel> {
@@ -22,13 +23,18 @@ export class WeatherService {
   }
 
   getLocation(query: string): Observable<any>{
-    const previousSearches = this.getListofMatches(query.replace(/[^a-zA-Z0-9 -]+/g, ""));
+    const previousSearches = this.getListofMatches(this.sanitizeQuery(query));
 
     if ( previousSearches.length !== 0) {
       console.log("Query was found on localstorage!");
       return of(previousSearches);
     }
-    return this.http.get<Observable<any[]>>(this.locationUrl + (query || this.DEFAULT_LOCATION))
+    return this.http.get<Observable<any[]>>(this.locationUrl + (query || this.DEFAULT_LOCATION), {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+
+    })
     .pipe(tap(data => {
       console.log("Query was was sent to API");
       const storedSearches = this.getStoredSearches();
@@ -57,5 +63,15 @@ export class WeatherService {
   private setStoredSearches(obj : object): void {
     localStorage.setItem("storedSearches", JSON.stringify(obj));
 
+  }
+
+  private sanitizeQuery(query: string): string {
+
+    query = query.toLowerCase();
+    query = query.replace(/\u00e5/g, "a");
+    query = query.replace(/\u00e4/g, "a");
+    query = query.replace(/\u00f6/g, "o");
+    query = query.replace(/[^A-Za-z -]/g, "");
+    return query;
   }
 }
