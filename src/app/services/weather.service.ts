@@ -3,15 +3,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { observable, Observable, of, pipe, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient) { }
 
-  private weatherUrl: string = "http://api.weatherapi.com/v1/forecast.json?key=4ef922377fd94497bcd215700210503&q=";
+  private weatherUrl: string = `http://api.weatherapi.com/v1/forecast.json?key=${environment.WEATHER_API_KEY}&q=`;
+  /* private weatherUrl: string = "http://api.weatherapi.com/v1/forecast.json?key=4ef922377fd94497bcd215700210503&q="; */
   private locationUrl: string = "http://api.weatherapi.com/v1/search.json?key=4ef922377fd94497bcd215700210503&days=5&aqi=no&alerts=yes&q=";
   private DEFAULT_LOCATION = "Partille, Vastra Gotaland, Sweden";
 
