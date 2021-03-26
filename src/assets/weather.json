@@ -1,0 +1,12 @@
+{
+    "min_temp": 1,
+    "max_temp": 7,
+    "the_temp": 4,
+    "weather_state_name": "clear",
+    "humidity": 78.0,
+    "wind_speed": 22.2,
+    "wind_direction_compass": "North-East",
+    "air_pressure": 954.1,
+    "predictability": 78
+
+}

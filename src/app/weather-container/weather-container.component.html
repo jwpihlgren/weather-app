@@ -1,0 +1,82 @@
+<div class="background-wrapper" *ngIf="weatherObject$ | async as data">
+    <div
+        class="background"
+        [ngStyle]="{
+            'background-image': getBackgroundUrl(data)
+        }"
+    ></div>
+</div>
+
+<div class="flex column space-between full-width">
+    <div class="top flex column">
+        <label for="weather-search">Search for a city</label>
+        <input
+            #searchInput
+            id="weather-search"
+            type="text"
+            list="location-list"
+            placeholder="E.g Gothenburg"
+            minlength="3"
+        />
+        <ul id="location-list" *ngIf="locationList$ | async as locations">
+            <li *ngFor="let location of locations">
+                <a
+                    href="#"
+                    id="{{ location.name }}"
+                    (click)="weatherRequest($event)"
+                    >{{ location.name }}</a
+                >
+            </li>
+        </ul>
+    </div>
+
+    <div class="center" *ngIf="weatherObject$ | async as data">
+        <h1>
+            {{ data.current.condition.text }} and
+            {{ data.current.temp_c | asFahrenheit: doConvert }} in
+            {{ data.location.name }}
+        </h1>
+        <!--         <h2>{{ data.forecast }}</h2> -->
+        <h3 class="p-8">
+            Min / Max:
+            {{
+                data.forecast.forecastday[0].day.mintemp_c
+                    | asFahrenheit: doConvert
+            }}
+            /
+            {{
+                data.forecast.forecastday[0].day.maxtemp_c
+                    | asFahrenheit: doConvert
+            }}
+        </h3>
+
+        <div class="horizontal p-8">
+            <h3>Humidity: {{ data.current.humidity }} %</h3>
+            <h3>
+                Windspeed:
+                {{
+                    asMilesPerHour
+                        ? (data.current.wind_kph | asMilesPerHour)
+                        : (data.current.wind_kph | asMetersPerSecond)
+                }}
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="center">
+    Powered by
+    <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
+</div>
+
+<!-- min_temp: number;
+max_temp: number;
+the_temp: number
+weather_state_name: string;
+humidity: number;
+wind_speed: number;
+wind_direction: string;
+air_pressure: number;
+predictability: number;
+ -->
+
+<!--  ../assets/images/weather-states/${data.weather_state_name}-day.jpg -->

@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+root {
+    color: #181818;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.p-8 {
+    padding: 8px;
+}
