@@ -13,13 +13,12 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  private weatherUrl: string = `http://api.weatherapi.com/v1/forecast.json?key=${environment.WEATHER_API_KEY}&lang=sv&q=`;
-  /* private weatherUrl: string = "http://api.weatherapi.com/v1/forecast.json?key=4ef922377fd94497bcd215700210503&q="; */
-  private locationUrl: string = "http://api.weatherapi.com/v1/search.json?key=4ef922377fd94497bcd215700210503&lang=sv&days=5&aqi=no&alerts=yes&q=";
+  private weatherUrl: string = `http://api.weatherapi.com/v1/forecast.json?key=${environment.WEATHER_API_KEY}&lang=sv&days=3&q=`;
+  private locationUrl: string = `http://api.weatherapi.com/v1/search.json?key=key=${environment.WEATHER_API_KEY}&lang=sv&aqi=no&alerts=yes&q=`;
   private DEFAULT_LOCATION = "Partille, Vastra Gotaland, Sweden";
 
   getWeather(query: string): Observable<WeatherModel> {
-    return this.http.get<WeatherModel>(this.weatherUrl + (query));
+    return this.http.get<WeatherModel>(this.weatherUrl + (query)).pipe(tap(data => console.log(data)));
   }
 
   getLocation(query: string): Observable<any>{

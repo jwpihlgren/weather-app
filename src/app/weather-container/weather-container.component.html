@@ -1,3 +1,4 @@
+<!-- BACKGROUND  -->
 <div class="background-wrapper" *ngIf="weatherObject$ | async as data">
     <div
         class="background"
@@ -7,17 +8,20 @@
     ></div>
 </div>
 
+<!-- SEARCH  -->
 <div class="flex column space-between full-width">
     <div class="top flex column">
-        <label for="weather-search">Sök efter en ort</label>
-        <input
-            #searchInput
-            id="weather-search"
-            type="text"
-            list="location-list"
-            placeholder="T.ex. Göteborg"
-            minlength="3"
-        />
+        <div class="search">
+            <label for="location-search">Sök efter en ort</label>
+            <input
+                #searchInput
+                id="location-search"
+                type="text"
+                list="location-list"
+                placeholder="T.ex. Göteborg"
+                minlength="3"
+            />
+        </div>
         <ul id="location-list" *ngIf="locationList$ | async as locations">
             <li *ngFor="let location of locations">
                 <a
@@ -29,57 +33,72 @@
             </li>
         </ul>
     </div>
-
+    <!-- DISPLAY -->
     <div class="center" *ngIf="weatherObject$ | async as data">
-        <h1>
-            {{ data.current.condition.text }} och
-            {{ data.current.temp_c | asFahrenheit: doConvert }} i
-            {{ data.location.name }}
+        <!-- Main -->
+        <h4 class="align-center mv-16">{{ data.location.name }}</h4>
+        <h1 class="align-center mv-16">
+            {{ data.current.temp_c | asFahrenheit: doConvert }}
         </h1>
-        <!--         <h2>{{ data.forecast }}</h2> -->
-        <h3 class="p-8">
-            Min / Max:
-            {{
-                data.forecast.forecastday[0].day.mintemp_c
-                    | asFahrenheit: doConvert
-            }}
-            /
-            {{
-                data.forecast.forecastday[0].day.maxtemp_c
-                    | asFahrenheit: doConvert
-            }}
-        </h3>
+        <h4 class="align-center mv-16">{{ data.current.condition.text }}</h4>
+        <!-- Data points -->
+        <div class="flex row space-between">
+            <div class="flex column">
+                <h5>MIN/MAX</h5>
+                <h4>
+                    {{
+                        data.forecast.forecastday[0].day.mintemp_c
+                            | asFahrenheit: doConvert
+                    }}
+                    /
+                    {{
+                        data.forecast.forecastday[0].day.maxtemp_c
+                            | asFahrenheit: doConvert
+                    }}
+                </h4>
+            </div>
+            <div class="flex column">
+                <h5>Vindhastighet</h5>
+                <h4>
+                    {{
+                        asMilesPerHour
+                            ? (data.current.wind_kph | asMilesPerHour)
+                            : (data.current.wind_kph | asMetersPerSecond)
+                    }}
+                </h4>
+            </div>
 
-        <div class="horizontal p-8">
-            <h3>Luftfuktighet: {{ data.current.humidity }} %</h3>
-            <h3>
-                Vindhastighet:
-                {{ data.current.wind_dir }} -
-                {{
-                    asMilesPerHour
-                        ? (data.current.wind_kph | asMilesPerHour)
-                        : (data.current.wind_kph | asMetersPerSecond)
-                }}
-            </h3>
+            <div class="flex column">
+                <h5>Vindriktning</h5>
+                <h4>{{ data.current.wind_dir }}</h4>
+            </div>
+
+            <div class="flex column">
+                <h5>Luftfuktighet</h5>
+                <h4>{{ data.current.humidity }}%</h4>
+            </div>
+        </div>
+
+        <div class="flex row space-around">
+            <div *ngFor="let day of data.forecast.forecastday" class="wrapper">
+                <span class="label">{{ day.date }} </span>
+                <img src="{{ day.day.condition.icon }}" />
+                <span class=".thin-text"
+                    >{{ day.day.mintemp_c | asFahrenheit: doConvert }} /
+                    {{ day.day.maxtemp_c | asFahrenheit: doConvert }}</span
+                >
+            </div>
         </div>
     </div>
-</div>
-<div class="center">
-    Powered by
-    <a href="https://www.weatherapi.com/" target="_blank" title="Weather API"
-        >WeatherAPI.com</a
-    >
-</div>
 
-<!-- min_temp: number;
-max_temp: number;
-the_temp: number
-weather_state_name: string;
-humidity: number;
-wind_speed: number;
-wind_direction: string;
-air_pressure: number;
-predictability: number;
- -->
-
-<!--  ../assets/images/weather-states/${data.weather_state_name}-day.jpg -->
+    <!-- FOOTER -->
+    <div class="center">
+        Powered by
+        <a
+            href="https://www.weatherapi.com/"
+            target="_blank"
+            title="Weather API"
+            >WeatherAPI.com</a
+        >
+    </div>
+</div>

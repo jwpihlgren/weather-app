@@ -10,6 +10,7 @@ import { AsFahrenheitPipe } from './pipes/as-fahrenheit.pipe';
 import { AsMetersPerSecondPipe } from './pipes/as-meters-per-second.pipe';
 import { AsMilesPerHourPipe } from './pipes/as-miles-per-hour.pipe';
 import { FormsModule } from '@angular/forms';
+import { DataPointTwoLineComponent } from './data-point-two-line/data-point-two-line.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     AsFahrenheitPipe,
     AsMetersPerSecondPipe,
     AsMilesPerHourPipe,
+    DataPointTwoLineComponent,
   ],
   imports: [
     BrowserModule,
