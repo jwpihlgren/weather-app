@@ -43,9 +43,9 @@
         <h4 class="align-center mv-16">{{ data.current.condition.text }}</h4>
         <!-- Data points -->
         <div class="flex row space-between">
-            <div class="flex column">
-                <h5>MIN/MAX</h5>
-                <h4>
+            <div class="flex column p-8">
+                <h5 class="p-8">MIN/MAX</h5>
+                <h4 class="p-8">
                     {{
                         data.forecast.forecastday[0].day.mintemp_c
                             | asFahrenheit: doConvert
@@ -57,9 +57,9 @@
                     }}
                 </h4>
             </div>
-            <div class="flex column">
-                <h5>Vindhastighet</h5>
-                <h4>
+            <div class="flex column p-8">
+                <h5 class="p-8">Vindhastighet</h5>
+                <h4 class="p-8">
                     {{
                         asMilesPerHour
                             ? (data.current.wind_kph | asMilesPerHour)
@@ -68,22 +68,27 @@
                 </h4>
             </div>
 
-            <div class="flex column">
-                <h5>Vindriktning</h5>
-                <h4>{{ data.current.wind_dir }}</h4>
+            <div class="flex column p-8">
+                <h5 class="p-8">Vindriktning</h5>
+                <h4 class="p-8">{{ data.current.wind_dir }}</h4>
             </div>
 
-            <div class="flex column">
-                <h5>Luftfuktighet</h5>
-                <h4>{{ data.current.humidity }}%</h4>
+            <div class="flex column p-8">
+                <h5 class="p-8">Luftfuktighet</h5>
+                <h4 class="p-8">{{ data.current.humidity }}%</h4>
             </div>
         </div>
+    </div>
 
+    <div *ngIf="weatherObject$ | async as data" class="top">
         <div class="flex row space-around">
-            <div *ngFor="let day of data.forecast.forecastday" class="wrapper">
-                <span class="label">{{ day.date }} </span>
-                <img src="{{ day.day.condition.icon }}" />
-                <span class=".thin-text"
+            <div
+                *ngFor="let day of data.forecast.forecastday"
+                class="wrapper background-on-picture text-on-black"
+            >
+                <span class="label p-8">{{ day.date }} </span>
+                <img class="-8" src="{{ day.day.condition.icon }}" />
+                <span class="thin-text p-8"
                     >{{ day.day.mintemp_c | asFahrenheit: doConvert }} /
                     {{ day.day.maxtemp_c | asFahrenheit: doConvert }}</span
                 >
@@ -92,7 +97,7 @@
     </div>
 
     <!-- FOOTER -->
-    <div class="center">
+    <div class="center background-on-picture text-on-black p-8">
         Powered by
         <a
             href="https://www.weatherapi.com/"

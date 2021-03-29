@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 
 export class AsFahrenheitPipe implements PipeTransform {
-  fahrenheit = "\u2109";
-  celcius = "\u2103"
+  fahrenheit = "\xB0F";
+  celcius = "\xB0C"
  transform(value: number, doConvert: boolean): string {
    if(doConvert) {
     return `${Math.floor((value * 0.28) * 1.8 + 32)} ${this.fahrenheit}`;

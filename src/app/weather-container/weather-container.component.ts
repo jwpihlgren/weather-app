@@ -22,7 +22,7 @@ export class WeatherContainerComponent implements OnInit, AfterViewInit, OnDestr
   weatherObject$: Observable<WeatherModel>;
   defaultLocation: string = "Partille, Vastra Gotaland, Sweden";
   doConvert: boolean = false;
-  asMilesPerHour: boolean = false;
+  asMilesPerHour: boolean = false
   forecastDayRange: Array<number> = [1, 2, 3, 4, 5];
 
   locationList$: Observable<any[]> = new Observable<any[]>();
