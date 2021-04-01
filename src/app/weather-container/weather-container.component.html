@@ -12,13 +12,15 @@
 <div class="flex column space-between full-width">
     <div class="top flex column">
         <div class="search">
-            <label for="location-search">Sök efter en ort</label>
+            <label [class.hidden]="!isSearchFocused" for="location-search"
+                >Sök efter en ort</label
+            >
             <input
                 #searchInput
                 id="location-search"
                 type="text"
                 list="location-list"
-                placeholder="T.ex. Göteborg"
+                [placeholder]="isSearchFocused ? ' ' : 'Sök efter en ort'"
                 minlength="3"
             />
         </div>

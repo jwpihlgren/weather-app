@@ -29,8 +29,11 @@ export class WeatherContainerComponent implements OnInit, AfterViewInit, OnDestr
 
   @ViewChild('searchInput') 
   input: ElementRef<HTMLInputElement>;
+  isSearchFocused: boolean = false;
 
   private subscription: Subscription;
+  private focusSubscription: Subscription;
+  private blurSubscription: Subscription;
 
   ngOnInit(): void {
       this.weatherObject$ = this.weatherService.getWeather(this.defaultLocation);
@@ -46,6 +49,17 @@ export class WeatherContainerComponent implements OnInit, AfterViewInit, OnDestr
     this.subscription = terms$.subscribe(criterieon => {
       this.locationRequest(criterieon);
     });
+
+    const focus$ = fromEvent<any>(this.input.nativeElement, 'focus').pipe(map((event) => event.type === "focus"));
+    this.focusSubscription = focus$.subscribe((focused: boolean) =>  {
+      this.isSearchFocused = focused;
+
+    const blur$ = fromEvent<any>(this.input.nativeElement, 'blur').pipe(map((event) => event.type === "focusout"));
+    this.blurSubscription = blur$.subscribe((blured: boolean) => {
+      this.isSearchFocused = blured;
+      })
+    });
+
   }
 
   weatherRequest(event): void {  
@@ -70,5 +84,7 @@ export class WeatherContainerComponent implements OnInit, AfterViewInit, OnDestr
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.focusSubscription.unsubscribe();
+    this.blurSubscription.unsubscribe();
   }
 }

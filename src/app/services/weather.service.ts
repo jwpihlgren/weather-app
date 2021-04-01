@@ -18,7 +18,7 @@ export class WeatherService {
   private DEFAULT_LOCATION = "Partille, Vastra Gotaland, Sweden";
 
   getWeather(query: string): Observable<WeatherModel> {
-    return this.http.get<WeatherModel>(this.weatherUrl + (query)).pipe(tap(data => console.log(data)));
+    return this.http.get<WeatherModel>(this.weatherUrl + (query))/* .pipe(tap(data => console.log(data))); */
   }
 
   getLocation(query: string): Observable<any>{
