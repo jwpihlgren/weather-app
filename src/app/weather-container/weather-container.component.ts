@@ -81,6 +81,11 @@ export class WeatherContainerComponent implements OnInit, AfterViewInit, OnDestr
     return 'url(' + this.backgroundImageService.getBackgroundUrl(weatherType, epoch) +'.jpg)';
   }
 
+  getEpoch(): number {
+    const date = new Date();
+    return date.getTime();
+  }
+
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

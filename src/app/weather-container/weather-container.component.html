@@ -5,7 +5,10 @@
         locationList: locationList$ | async
     } as data"
 >
-    <div class="background-wrapper" *ngIf="data.weatherObject">
+    <div
+        class="background-wrapper"
+        *ngIf="data.weatherObject; else loadingBackground"
+    >
         <div
             class="background"
             [ngStyle]="{
@@ -13,6 +16,20 @@
             }"
         ></div>
     </div>
+
+    <ng-template #loadingBackground>
+        <div class="background-wrapper">
+            <div
+                class="background"
+                [ngStyle]="{
+                    'background-image': {
+                        'location.localtime_epoch': getEpoch(),
+                        'current.condition.code': 1000
+                    }
+                }"
+            ></div>
+        </div>
+    </ng-template>
 
     <!-- SEARCH  -->
     <div class="flex column space-between full-width">
@@ -42,7 +59,7 @@
             </ul>
         </div>
         <!-- CURRENT WEATHER -->
-        <div class="center" *ngIf="data.weatherObject">
+        <div class="center" *ngIf="data.weatherObject; else loadingCurrent">
             <!-- Main -->
             <h4 class="align-center mv-16">
                 {{ data.weatherObject.location.name }}
