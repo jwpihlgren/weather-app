@@ -22,13 +22,14 @@ export class WeatherService {
   }
 
   getLocation(query: string): Observable<any>{
-    const previousSearches = this.getListofMatches(this.sanitizeQuery(query));
+    const cleanQuery = this.sanitizeQuery(query);
+    const previousSearches = this.getListofMatches(cleanQuery);
 
     if ( previousSearches.length !== 0) {
       console.log("Query was found on localstorage!");
       return of(previousSearches);
     }
-    return this.http.get<Observable<any[]>>(this.locationUrl + (query || this.DEFAULT_LOCATION), {
+    return this.http.get<Observable<any[]>>(this.locationUrl + (cleanQuery || this.DEFAULT_LOCATION), {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
@@ -37,7 +38,7 @@ export class WeatherService {
     .pipe(tap(data => {
       console.log("Query was was sent to API");
       const storedSearches = this.getStoredSearches();
-      storedSearches[query] = data;
+      storedSearches[cleanQuery] = data;
       this.setStoredSearches(storedSearches);
     }));
   }

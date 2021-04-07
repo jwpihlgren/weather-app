@@ -9,7 +9,7 @@ import { WeatherContainerComponent } from './weather-container/weather-container
 import { AsFahrenheitPipe } from './pipes/as-fahrenheit.pipe';
 import { AsMetersPerSecondPipe } from './pipes/as-meters-per-second.pipe';
 import { AsMilesPerHourPipe } from './pipes/as-miles-per-hour.pipe';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
