@@ -33,9 +33,9 @@ export class WeatherContainerComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     this.weatherObject$ = this.weatherService.getWeather(this.defaultLocation);
-    this.locationList$ = new Observable<any[]>();
+ /*    this.locationList$ = new Observable<any[]>(); */ //Remove this if nothing broke
 
-    this.searchControl.valueChanges.pipe(filter(value => value.length > 3), 
+    this.searchControl.valueChanges.pipe(filter(value => value.length >= 3), 
     debounceTime(100), 
     distinctUntilChanged())
     .subscribe(value => {
@@ -58,14 +58,14 @@ export class WeatherContainerComponent implements AfterViewInit{
     this.locationList$ = new Observable<any[]>();
     this.weatherObject$ = this.weatherService.getWeather(event.target.id + "");
     this.searchControl.setValue("");
-    console.log("weather request")
   }
 
   locationRequest(criterion: string): void {
     console.log(criterion);
         if (criterion.length > 3) {
           this.locationList$ = this.weatherService.getLocation(criterion);
-        };
+        }
+        else this.locationList$ = new Observable<any[]>();
   }
 
   getBackgroundUrl(object: any): string{
