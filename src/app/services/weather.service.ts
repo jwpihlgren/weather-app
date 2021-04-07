@@ -1,10 +1,9 @@
 import { WeatherModel } from '../models/weather.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { observable, Observable, of, pipe, Subscription } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { query } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'

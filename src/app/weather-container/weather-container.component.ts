@@ -1,12 +1,10 @@
 
 import { Component } from '@angular/core';
-import { Observable, fromEvent } from 'rxjs';
+import { Observable} from 'rxjs';
 import { WeatherService } from '../services/weather.service';
 import { BackgroundImageService } from '../services/background-image.service';
 import { WeatherModel } from '../models/weather.model';
-import { ElementRef } from '@angular/core';
-import { debounceTime, distinctUntilChanged, startWith, map, delay, filter } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
