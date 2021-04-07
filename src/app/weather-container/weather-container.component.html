@@ -22,10 +22,7 @@
             <div
                 class="background"
                 [ngStyle]="{
-                    'background-image': {
-                        'location.localtime_epoch': getEpoch(),
-                        'current.condition.code': 1000
-                    }
+                    'background-image': getBackgroundUrl({})
                 }"
             ></div>
         </div>
@@ -35,15 +32,17 @@
     <div class="flex column space-between full-width">
         <div class="top flex column">
             <div class="search">
-                <label [class.hidden]="!isSearchFocused" for="location-search"
+                <label [class.hidden]="!searchHasFocus" for="location-search"
                     >Sök efter en ort</label
                 >
                 <input
-                    #searchInput
+                    [formControl]="searchControl"
+                    (focus)="onFocus($event)"
+                    (blur)="onBlur($event)"
                     id="location-search"
                     type="text"
                     list="location-list"
-                    [placeholder]="isSearchFocused ? ' ' : 'Sök efter en ort'"
+                    [placeholder]="searchHasFocus ? ' ' : 'Sök efter en ort'"
                     minlength="3"
                 />
             </div>
