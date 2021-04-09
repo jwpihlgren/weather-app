@@ -32,8 +32,8 @@
     <div class="flex column space-between full-width">
         <div class="top flex column">
             <div class="search">
-                <label [class.hidden]="!searchHasFocus" for="location-search"
-                    >Sök efter en ort</label
+                <label [class.hidden]="!searchHasFocus" class="pv-8" for="location-search"
+                    ><h5>Sök efter en ort</h5></label
                 >
                 <input
                     [formControl]="searchControl"
@@ -46,12 +46,12 @@
                     minlength="3"
                 />
             </div>
-            <ul id="location-list">
+            <ul id="location-list" [class.hidden]="!searchHasFocus">
                 <li *ngFor="let location of data.locationList">
                     <a
                         href="#"
                         id="{{ location.name }}"
-                        (click)="weatherRequest($event)"
+                        (mousedown)="weatherRequest($event)"
                         >{{ location.name }}</a
                     >
                 </li>
@@ -114,6 +114,8 @@
                     </h4>
                 </div>
             </div>
+            <!-- Updated -->
+            <div class="flex row justify-end thin-text mv-16">Senast uppdaterad: {{data.weatherObject.current.last_updated}}</div>
         </div>
 
         <ng-template #loadingCurrent>
@@ -180,7 +182,7 @@
         </ng-template>
 
         <!-- FOOTER -->
-        <div class="center background-on-picture text-on-black p-8">
+        <div class="center background-on-picture text-on-black thin-text p-16">
             Powered by
             <a
                 href="https://www.weatherapi.com/"

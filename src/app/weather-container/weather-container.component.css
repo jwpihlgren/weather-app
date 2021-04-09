@@ -77,6 +77,9 @@
 .align-center {
     text-align: center;
 }
+.justify-end {
+    justify-content: flex-end;
+}
 
 .mv-16 {
     margin-top: 16px;
@@ -85,6 +88,15 @@
 
 .p-8 {
     padding: 8px;
+}
+.pv-8 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+
+.p-16 {
+    padding: 16px;
 }
 
 /** Elements */
@@ -115,6 +127,7 @@ label {
 
 input {
     border: none;
+    border-radius: 1px;
     padding: 16px;
     box-sizing: border-box;
     flex: 2;
@@ -133,6 +146,7 @@ a {
     color: inherit;
     width: 100%;
     height: 100%;
+    display: block;
 }
 
 ul {

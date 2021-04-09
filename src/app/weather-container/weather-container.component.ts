@@ -44,11 +44,11 @@ export class WeatherContainerComponent implements AfterViewInit{
 
   }
 
-  onFocus(event: Event): void {
+  onFocus(event: FocusEvent): void {
     this.searchHasFocus = true;
   }
 
-  onBlur(event: Event): void {
+  onBlur(event: FocusEvent): void {
     this.searchHasFocus = false;
   }
 
