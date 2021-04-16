@@ -6,7 +6,7 @@ export class WeatherModel{
     weather_state_name: string;
     humidity: number;
     wind_speed: number;
-    nwind_direction_compass: string;
+    wind_direction_compass: string;
     air_pressure: number;
     predictability: number;
   }

@@ -4,23 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BackgroundImageService {
-  constructor(){
 
+  getBackgroundUrl(code: number):string {
+    return `./assets/images/weather-states/${this.codes[`${code}`]}-${this.getTimeofDay()}`;
   }
 
-  getBackgroundUrl(code: number, date: number):string {
-    return `./assets/images/weather-states/${this.getWeatherType(code)}-${this.getTimeofDay(date)}`
-  }
-
-  private getTimeofDay(epoch: number){
+  private getTimeofDay(){
     let currentHour = new Date(Date.now()).getHours();
-    if (currentHour < 8) return "morning";
-    if (currentHour > 20) return "night";
+    if (currentHour > 5 && currentHour < 10) return "morning";
+    if (currentHour > 18 || currentHour < 6) return "night";
     return ("day")
-  }
-
-  private getWeatherType(code: number):string {
-    return this.codes[code + ""]
   }
 
   private codes = {
