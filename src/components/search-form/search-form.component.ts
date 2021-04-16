@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-form',
@@ -9,10 +8,6 @@ import { Observable } from 'rxjs';
 export class SearchFormComponent implements OnInit {
 
   constructor() { }
-
-  @Input() loading: boolean = false;
-  locationList$: Observable<any[]> = new Observable<any[]>();
-
 
   ngOnInit(): void {
   }
