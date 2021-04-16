@@ -1,0 +1,28 @@
+<div class="flex column space-between full-width">
+    <div class="top flex column">
+        <div class="search">
+            <label [class.hidden]="!searchHasFocus" class="pv-8" for="location-search"
+                ><h5>Sök efter en ort</h5></label
+            >
+            <input
+                [formControl]="searchControl"
+                (focus)="onFocus($event)"
+                (blur)="onBlur($event)"
+                id="location-search"
+                type="text"
+                list="location-list"
+                [placeholder]="searchHasFocus ? ' ' : 'Sök efter en ort'"
+                minlength="3"
+            />
+        </div>
+        <ul id="location-list" [class.hidden]="!searchHasFocus">
+            <li *ngFor="let location of data.locationList">
+                <a
+                    href="#"
+                    id="{{ location.name }}"
+                    (mousedown)="weatherRequest($event)"
+                    >{{ location.name }}</a
+                >
+            </li>
+        </ul>
+    </div>
