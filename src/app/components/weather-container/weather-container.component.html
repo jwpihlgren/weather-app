@@ -67,13 +67,7 @@
                 <div class="flex column p-8">
                     <h5 class="p-8">Vindhastighet</h5>
                     <h4 class="p-8">
-                        {{
-                            asMilesPerHour
-                                ? (data.weatherObject.current.wind_kph
-                                  | asMilesPerHour)
-                                : (data.weatherObject.current.wind_kph
-                                  | asMetersPerSecond)
-                        }}
+                        {{data.weatherObject.current.wind_kph | convertWindspeedUnit: temperaretureUnit}}
                     </h4>
                 </div>
 

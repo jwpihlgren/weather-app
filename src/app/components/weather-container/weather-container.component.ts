@@ -6,6 +6,7 @@ import { BackgroundImageService } from 'app/services/background-image.service';
 import { WeatherModel } from 'app/models/weather.model';
 import { AfterViewInit } from '@angular/core';
 import { DegreeUnit } from 'app/enums/degree-units/degree-units.enum';
+import { TemperatureUnit } from 'app/enums/degree-units/temperature-unit-enum';
 
 
 
@@ -23,7 +24,7 @@ export class WeatherContainerComponent implements AfterViewInit{
   weatherObject$: Observable<WeatherModel>;
   defaultLocation: string = "Partille, Vastra Gotaland, Sweden";
   degreeUnit: DegreeUnit = DegreeUnit.celcius;
-  asMilesPerHour: boolean = false
+  temperatureUnit: TemperatureUnit = TemperatureUnit.mps;
   forecastDayRange: Array<number> = [1, 2, 3, 4, 5];
 
   locationList$: Observable<any[]> = new Observable<any[]>();
