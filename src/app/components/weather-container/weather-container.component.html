@@ -28,67 +28,26 @@
         </div>
     </ng-template>
 
-    
-    
+    <!-- CONTENT -->
     <div class="flex column space-between full-width">
-        <!-- SEARCH  -->
         <app-search-form [locationList]="data.locationList" [hasFocus]="searchHasFocus" (onFocus)="onFocus($event)" (locationRequest$)="locationRequest($event)" (weatherRequest$)="weatherRequest($event)"></app-search-form>
-
-        <!-- CURRENT WEATHER -->
-        <div class="center" *ngIf="data.weatherObject; else loadingCurrent">
-            <!-- Main -->
-            <h4 class="align-center mv-16">
-                {{ data.weatherObject.location.name }}
-            </h4>
-            <h1 class="align-center mv-16">
-                {{
-                    data.weatherObject.current.temp_c | convertDegreeUnit: degreeUnit
-                }}
-            </h1>
-            <h4 class="align-center mv-16">
-                {{ data.weatherObject.current.condition.text }}
-            </h4>
-            <!-- Data points -->
-            <div class="flex row space-between">
-                <div class="flex column p-8">
-                    <h5 class="p-8">MIN/MAX</h5>
-                    <h4 class="p-8">
-                        {{
-                            data.weatherObject.forecast.forecastday[0].day
-                                .mintemp_c | convertDegreeUnit: degreeUnit
-                        }}
-                        /
-                        {{
-                            data.weatherObject.forecast.forecastday[0].day
-                                .maxtemp_c | convertDegreeUnit: degreeUnit
-                        }}
-                    </h4>
-                </div>
-                <div class="flex column p-8">
-                    <h5 class="p-8">Vindhastighet</h5>
-                    <h4 class="p-8">
-                        {{data.weatherObject.current.wind_kph | convertWindspeedUnit: windspeedUnit}}
-                    </h4>
-                </div>
-
-                <div class="flex column p-8">
-                    <h5 class="p-8">Vindriktning</h5>
-                    <h4 class="p-8">
-                        {{ data.weatherObject.current.wind_dir }}
-                    </h4>
-                </div>
-
-                <div class="flex column p-8">
-                    <h5 class="p-8">Luftfuktighet</h5>
-                    <h4 class="p-8">
-                        {{ data.weatherObject.current.humidity }}%
-                    </h4>
-                </div>
-            </div>
-            <!-- Updated -->
-            <div class="flex row justify-end thin-text mv-16">Senast uppdaterad: {{data.weatherObject.current.last_updated}}</div>
-        </div>
-
+        <app-current-item
+        *ngIf="data.weatherObject; else loadingCurrent"
+        [data]="{
+            locationName: data.weatherObject.location.name,
+            currentTempC: data.weatherObject.current.temp_c | convertDegreeUnit: degreeUnit,
+            minTempC: data.weatherObject.forecast.forecastday[0].day
+                .mintemp_c | convertDegreeUnit: degreeUnit,
+            maxTempC: data.weatherObject.forecast.forecastday[0].day
+                .maxtemp_c | convertDegreeUnit: degreeUnit,
+            condition: data.weatherObject.current.condition.text,
+            windspeed: data.weatherObject.current.wind_kph | convertWindspeedUnit: windspeedUnit,
+            windDirection: data.weatherObject.current.wind_dir,
+            humidity: data.weatherObject.current.humidity,
+            lastUpdated: data.weatherObject.current.last_updated
+        }"
+        ></app-current-item>
+      
         <ng-template #loadingCurrent>
             <div class="center">
                 <!-- Main -->

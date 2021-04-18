@@ -9,8 +9,10 @@ import { WeatherContainerComponent } from './components/weather-container/weathe
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { ForecastItemComponent } from './components/forecast-item/forecast-item.component';
+import { CurrentItemComponent } from './components/current-item/current-item.component';
 import { ConvertDegreeUnitPipe } from './pipes/convert-degree-unit';
 import { ConvertWindspeedUnitPipe } from './pipes/convert-windspeed-unit.pipe';
+
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { ConvertWindspeedUnitPipe } from './pipes/convert-windspeed-unit.pipe';
     WeatherContainerComponent,
     SearchFormComponent,
     ForecastItemComponent,
+    CurrentItemComponent,
     ConvertDegreeUnitPipe,
     ConvertWindspeedUnitPipe,
   ],
