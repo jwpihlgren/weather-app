@@ -42,7 +42,7 @@
             </h4>
             <h1 class="align-center mv-16">
                 {{
-                    data.weatherObject.current.temp_c | asFahrenheit: doConvert
+                    data.weatherObject.current.temp_c | convertDegreeUnit: degreeUnit
                 }}
             </h1>
             <h4 class="align-center mv-16">
@@ -55,12 +55,12 @@
                     <h4 class="p-8">
                         {{
                             data.weatherObject.forecast.forecastday[0].day
-                                .mintemp_c | asFahrenheit: doConvert
+                                .mintemp_c | convertDegreeUnit: degreeUnit
                         }}
                         /
                         {{
                             data.weatherObject.forecast.forecastday[0].day
-                                .maxtemp_c | asFahrenheit: doConvert
+                                .maxtemp_c | convertDegreeUnit: degreeUnit
                         }}
                     </h4>
                 </div>
@@ -135,8 +135,8 @@
                     [data]="{
                         date: day.date,
                         iconUrl: day.day.condition.icon,
-                        mintempC: day.day.mintemp_c | asFahrenheit: doConvert,
-                        maxtempC: day.day.maxtemp_c | asFahrenheit: doConvert
+                        mintempC: day.day.mintemp_c | convertDegreeUnit: degreeUnit,
+                        maxtempC: day.day.maxtemp_c | convertDegreeUnit: degreeUnit
                     }">
                 </app-forecast-item>
             </div>
