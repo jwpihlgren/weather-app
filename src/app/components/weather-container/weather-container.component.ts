@@ -21,14 +21,17 @@ export class WeatherContainerComponent implements AfterViewInit{
     private weatherService: WeatherService, 
     private backgroundImageService: BackgroundImageService) { }
 
-  weatherObject$: Observable<WeatherModel>;
-  defaultLocation: string = "Partille, Vastra Gotaland, Sweden";
+  /* The units to display numeric values with */
   degreeUnit: DegreeUnit = DegreeUnit.celcius;
   windspeedUnit: WindspeedUnit = WindspeedUnit.mps;
+
+  /* Array to use to render forecast items until we get a reponse*/
   forecastDayRange: Array<number> = [1, 2, 3];
 
-  locationList$: Observable<any[]> = new Observable<any[]>();
+  weatherObject$: Observable<WeatherModel>;
+  defaultLocation: string = "Partille, Vastra Gotaland, Sweden";
 
+  locationList$: Observable<string[]> = new Observable<string[]>();
   searchHasFocus: boolean = false;
 
   ngAfterViewInit(): void {
@@ -44,7 +47,7 @@ export class WeatherContainerComponent implements AfterViewInit{
 
   weatherRequest(event): void {  
     event.preventDefault();
-    this.locationList$ = new Observable<any[]>();
+    this.locationList$ = new Observable<string[]>();
     this.weatherObject$ = this.weatherService.getWeather(event.target.id + "");
   }
 
@@ -53,7 +56,7 @@ export class WeatherContainerComponent implements AfterViewInit{
         if (criterion.length > 3) {
           this.locationList$ = this.weatherService.getLocation(criterion);
         }
-        else this.locationList$ = new Observable<any[]>();
+        else this.locationList$ = new Observable<string[]>();
   }
 
   getBackgroundUrl(code: number): string{
