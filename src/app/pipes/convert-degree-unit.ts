@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DegreeUnit } from 'app/enums/degree-units/degree-units.enum';
+import { DegreeUnit } from 'app/enums/degree-units.enum';
 
 @Pipe({
   name: 'convertDegreeUnit'
