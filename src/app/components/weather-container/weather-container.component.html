@@ -44,7 +44,7 @@
             class="flex mv-16 row space-around full-width ">
                     <app-forecast-item
                     *ngFor="let day of data.weatherObject.forecast.forecastday"
-                    class="flex column background-on-picture text-on-black" 
+                    class="flex column background-on-picture text-on-black p-8" 
                     [data]="{
                         date: day.date,
                         iconUrl: day.day.condition.icon,
