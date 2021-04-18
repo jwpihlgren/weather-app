@@ -25,7 +25,7 @@ export class WeatherContainerComponent implements AfterViewInit{
   defaultLocation: string = "Partille, Vastra Gotaland, Sweden";
   degreeUnit: DegreeUnit = DegreeUnit.celcius;
   temperatureUnit: TemperatureUnit = TemperatureUnit.mps;
-  forecastDayRange: Array<number> = [1, 2, 3, 4, 5];
+  forecastDayRange: Array<number> = [1, 2, 3];
 
   locationList$: Observable<any[]> = new Observable<any[]>();
 
