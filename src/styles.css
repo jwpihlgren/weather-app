@@ -94,6 +94,14 @@ h5 {
     justify-content: flex-end;
 }
 
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
 .mv-16 {
     margin-top: 16px;
     margin-bottom: 16px;
@@ -110,6 +118,10 @@ h5 {
 
 .p-16 {
     padding: 16px;
+}
+
+.full-width {
+    width: 600px;
 }
 
 input {
@@ -212,7 +224,7 @@ li:hover {
     background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
     color: white;
     font-weight: bold;
-    margin: 0 auto;
+/*     margin: 0 auto; */
     max-width: 600px;
     width: 100%;
     padding: 16px;
