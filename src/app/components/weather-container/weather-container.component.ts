@@ -22,8 +22,12 @@ export class WeatherContainerComponent implements AfterViewInit{
     private backgroundImageService: BackgroundImageService) { }
 
   /* The units to display numeric values with */
-  degreeUnit: DegreeUnit = DegreeUnit.celcius;
-  windspeedUnit: WindspeedUnit = WindspeedUnit.mps;
+
+
+  units = {
+    degreeUnit:  DegreeUnit.celcius,
+    windspeedUnit : WindspeedUnit.mps
+  }
 
   /* Array to use to render forecast items until we get a reponse*/
   forecastDayRange: Array<number> = [1, 2, 3];

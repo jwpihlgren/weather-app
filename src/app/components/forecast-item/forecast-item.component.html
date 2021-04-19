@@ -6,5 +6,5 @@
     class="p-8" src="{{ data.iconUrl }}" />
 <span 
     class="thin-text p-8">
-    {{ data.mintempC }} / {{ data.maxtempC}}
+    {{ data.minTempC | convertDegreeUnit: units.degreeUnit}} / {{ data.maxTempC | convertDegreeUnit: units.degreeUnit}}
 </span>

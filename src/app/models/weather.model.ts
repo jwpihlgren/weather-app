@@ -1,12 +1,17 @@
+
+import { ForecastModel } from 'app/models/forecast.model'
 export class WeatherModel{
-    name: string;
-    min_temp: number;
-    max_temp: number;
-    the_temp: number
-    weather_state_name: string;
+  locationName: string;
+    minTempC: number;
+    maxTempC: number;
+    currentTempC: number
+    condition: string;
+    code: number;
     humidity: number;
-    wind_speed: number;
-    wind_direction_compass: string;
-    air_pressure: number;
-    predictability: number;
+    windspeed: number;
+    windDirection: string;
+    airPressure: number;
+    lastUpdated: string;
+    forecast: ForecastModel[]
   }
+

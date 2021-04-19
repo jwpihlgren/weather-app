@@ -2,7 +2,7 @@ import { WeatherModel } from '../models/weather.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -17,7 +17,31 @@ export class WeatherService {
   private DEFAULT_LOCATION = "Partille, Vastra Gotaland, Sweden";
 
   getWeather(query: string): Observable<WeatherModel> {
-    return this.http.get<WeatherModel>(this.weatherUrl + (query))/* .pipe(tap(data => console.log(data))); */
+    return this.http.get<any>(this.weatherUrl + query).pipe(map(res => {
+      const data: WeatherModel = {
+        locationName: res.location.name,
+        currentTempC: res.current.temp_c,
+        minTempC: res.forecast.forecastday[0].day.mintemp_c, 
+        maxTempC: res.forecast.forecastday[0].day.maxtemp_c, 
+        condition: res.current.condition.text,
+        code: res.current.condition.code,
+        windspeed: res.current.wind_kph ,
+        windDirection: res.current.wind_dir,
+        humidity: res.current.humidity,
+        lastUpdated: res.current.last_updated,
+        airPressure: res.current.pressure_mb,
+        forecast: res.forecast.forecastday.map(day => {
+          const obj = {
+            date: day.date,
+            minTempC: day.day.mintemp_c,
+            maxTempC: day.day.maxtemp_c,
+            iconUrl: day.day.condition.icon
+          }
+          return obj
+        })
+      }
+        return data;
+    }))
   }
 
   getLocation(query: string): Observable<any>{

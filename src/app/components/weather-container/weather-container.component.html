@@ -12,50 +12,43 @@
         <div
             class="background"
             [ngStyle]="{
-                'background-image': getBackgroundUrl(data.weatherObject.current.condition.code)
+                'background-image': getBackgroundUrl(data.weatherObject.condition.code)
             }"
         ></div>
     </div>
 
     <!-- CONTENT -->
     <div class="flex column space-between full-width align-center">
-        <app-search-form [locationList]="data.locationList" [hasFocus]="searchHasFocus" (onFocus)="onFocus($event)" (locationRequest$)="locationRequest($event)" (weatherRequest$)="weatherRequest($event)"></app-search-form>
+
+        <app-search-form 
+            [locationList]="data.locationList" 
+            [hasFocus]="searchHasFocus" 
+            (onFocus)="onFocus($event)" 
+            (locationRequest$)="locationRequest($event)" 
+            (weatherRequest$)="weatherRequest($event)"
+        ></app-search-form>
+
         <app-current-item
-        class="center mv-16"
-        *ngIf="data.weatherObject; else loadingCurrent"
-        [data]="{
-            locationName: data.weatherObject.location.name,
-            currentTempC: data.weatherObject.current.temp_c | convertDegreeUnit: degreeUnit,
-            minTempC: data.weatherObject.forecast.forecastday[0].day
-                .mintemp_c | convertDegreeUnit: degreeUnit,
-            maxTempC: data.weatherObject.forecast.forecastday[0].day
-                .maxtemp_c | convertDegreeUnit: degreeUnit,
-            condition: data.weatherObject.current.condition.text,
-            windspeed: data.weatherObject.current.wind_kph | convertWindspeedUnit: windspeedUnit,
-            windDirection: data.weatherObject.current.wind_dir,
-            humidity: data.weatherObject.current.humidity,
-            lastUpdated: data.weatherObject.current.last_updated
-        }"
+            class="center mv-16"
+            *ngIf="data.weatherObject; else loadingCurrent"
+            [data]="data.weatherObject"
+            [units]="units"
         ></app-current-item>
-    
-        <!-- FORECAST -->
-            <div
+
+        <div
             *ngIf="data.weatherObject; else loadingForecast" 
-            class="flex mv-16 row space-around full-width ">
-                    <app-forecast-item
-                    *ngFor="let day of data.weatherObject.forecast.forecastday"
-                    class="flex column background-on-picture text-on-black p-8" 
-                    [data]="{
-                        date: day.date,
-                        iconUrl: day.day.condition.icon,
-                        mintempC: day.day.mintemp_c | convertDegreeUnit: degreeUnit,
-                        maxtempC: day.day.maxtemp_c | convertDegreeUnit: degreeUnit
-                    }">
-                </app-forecast-item>
-            </div>
+            class="flex mv-16 row space-around full-width "
+            >
+            <app-forecast-item
+                *ngFor="let forecastDay of data.weatherObject.forecast"
+                class="flex column background-on-picture text-on-black p-8" 
+                [data]="forecastDay"
+                [units]="units"
+            ></app-forecast-item>
+        </div>
    
     <!-- FOOTER -->
-    <div class="center background-on-picture text-on-black thin-text p-16 mv-16">
+    <div class="center full-width background-on-picture text-on-black thin-text p-16 mv-16">
         Powered by
         <a
             href="https://www.weatherapi.com/"

@@ -5,7 +5,7 @@
     </h4>
     <h1 class="align-center mv-16">
         {{
-            data.currentTempC
+            data.currentTempC | convertDegreeUnit: units.degreeUnit
         }}
     </h1>
     <h4 class="align-center mv-16">
@@ -17,18 +17,18 @@
             <h5 class="p-8">MIN/MAX</h5>
             <h4 class="p-8">
                 {{
-                    data.minTempC
+                    data.minTempC | convertDegreeUnit: units.degreeUnit
                 }}
                 /
                 {{
-                    data.maxTempC
+                    data.maxTempC | convertDegreeUnit: units.degreeUnit
                 }}
             </h4>
         </div>
         <div class="flex column p-8">
             <h5 class="p-8">Vindhastighet</h5>
             <h4 class="p-8">
-                {{data.windspeed}}
+                {{data.windspeed | convertWindspeedUnit: units.windspeedUnit}}
             </h4>
         </div>
 

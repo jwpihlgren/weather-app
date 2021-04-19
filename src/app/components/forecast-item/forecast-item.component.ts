@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ForeCastItem } from 'app/models/fore-cast-item.model';
+import {ForecastModel } from 'app/models/forecast.model'
+
 
 @Component({
   selector: 'app-forecast-item',
@@ -10,7 +11,8 @@ export class ForecastItemComponent implements OnInit {
 
   constructor() { }
 
-  @Input() data: ForeCastItem
+  @Input() data: ForecastModel
+  @Input() units: any
 
   ngOnInit(): void {
   }

@@ -10,7 +10,8 @@ export class CurrentItemComponent implements OnInit {
 
   constructor() { }
 
-  @Input() data: CurrentItem
+  @Input() data: CurrentItem;
+  @Input() units: any;
 
   ngOnInit(): void {
   }
