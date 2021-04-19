@@ -6,10 +6,12 @@ import { Injectable } from '@angular/core';
 export class BackgroundImageService {
 
   getBackgroundUrl(code: number):string {
+    console.log(code)
     return `./assets/images/weather-states/${this.codes[`${code}`]}-${this.getTimeofDay()}`;
   }
 
   private getTimeofDay(){
+    
     let currentHour = new Date(Date.now()).getHours();
     if (currentHour > 5 && currentHour < 10) return "morning";
     if (currentHour > 18 || currentHour < 6) return "night";
