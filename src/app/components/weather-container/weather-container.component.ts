@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { Observable} from 'rxjs';
 import { WeatherService } from 'app/services/weather.service';
 import { BackgroundImageService } from 'app/services/background-image.service';
@@ -19,11 +19,11 @@ export class WeatherContainerComponent implements AfterViewInit{
 
   constructor(
     private weatherService: WeatherService, 
-    private backgroundImageService: BackgroundImageService) { }
+    private backgroundImageService: BackgroundImageService,
+  ) { }
+
 
   /* The units to display numeric values with */
-
-
   units = {
     degreeUnit:  DegreeUnit.celcius,
     windspeedUnit : WindspeedUnit.mps
