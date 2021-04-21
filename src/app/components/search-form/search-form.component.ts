@@ -40,7 +40,7 @@ export class SearchFormComponent implements OnInit {
     event.preventDefault();
     this.weatherRequest$.emit(event);
     this.searchControl.setValue(event.target.id);
-    this.hasFocus = false;
+    this.focusRequest$.emit(new FocusEvent('blur'));
   }
 
   onRemove(event: Event): void {
