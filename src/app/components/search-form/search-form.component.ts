@@ -12,7 +12,7 @@ export class SearchFormComponent implements OnInit {
   constructor() { }
 
   @Input() hasFocus: boolean = false;
-  @Output() focusRequest$: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() focusRequest$: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
 
   @Input() locationList: any[] = [];
   @Output() locationRequest$: EventEmitter<string> = new EventEmitter<string>();
@@ -32,9 +32,8 @@ export class SearchFormComponent implements OnInit {
     });
   }
 
-   onFocus(event: Event): void {
-    if(event.type === 'focus') this.hasFocus = true;
-    if(event.type === 'blur') this.hasFocus = false;
+   onFocus(event: FocusEvent): void {
+     this.focusRequest$.emit(event);
   }
 
   onWeatherRequest(event: any): void {
@@ -47,7 +46,7 @@ export class SearchFormComponent implements OnInit {
   onRemove(event: Event): void {
     event.preventDefault();
     this.searchControl.setValue("");
-    this.locationRequest$.emit("");
+    this.locationRequest$.emit(this.searchControl.value);
   }
 
  

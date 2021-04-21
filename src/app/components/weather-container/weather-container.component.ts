@@ -46,6 +46,7 @@ export class WeatherContainerComponent implements AfterViewInit{
   }
 
   onFocus(event: FocusEvent): void {
+    console.log("Focus to root")
     if(event.type === 'focus') this.searchHasFocus = true;
     else if(event.type === 'blur') this.searchHasFocus = false;
     else console.log("Wrong event type");
