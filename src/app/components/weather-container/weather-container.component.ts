@@ -21,7 +21,7 @@ export class WeatherContainerComponent implements AfterViewInit{
   constructor(
     private weatherService: WeatherService, 
     private backgroundImageService: BackgroundImageService,
-    private elementRef: ElementRef
+    private rootElementRef: ElementRef
   ) { }
 
 
@@ -55,8 +55,7 @@ export class WeatherContainerComponent implements AfterViewInit{
   weatherRequest(event): void {  
     this.locationList$ = new Observable<string[]>();
     this.weatherObject$ = this.weatherService.getWeather(event.target.id + "");
-    console.log(this.elementRef)
-    if(this.elementRef) this.elementRef.nativeElement.focus();
+    if(this.rootElementRef) this.rootElementRef.nativeElement.focus();
   }
 
   locationRequest(criterion: string): void {
