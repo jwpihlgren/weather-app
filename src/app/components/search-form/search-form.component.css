@@ -1,0 +1,45 @@
+:host {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+input {
+    border: none;
+    border-radius: 1px;
+    padding: 16px;
+    box-sizing: border-box;
+    flex: 2;
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:focus + ul {
+    display: block;
+}
+
+.input-field {
+    border-radius: 1px;
+    display: flex;
+    flex-direction: row;
+}
+.input-field:focus-within {
+    outline: 2px solid #272727 !important;
+    border-radius: 1px;
+}
+
+button {
+    background-color: white;
+    border: none;
+    border-radius: 0 1px 1px 0;
+}
+
+i{
+    padding: 8px 16px;
+}
+

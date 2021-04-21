@@ -60,7 +60,6 @@ export class WeatherContainerComponent implements AfterViewInit{
   }
 
   locationRequest(criterion: string): void {
-    console.log(criterion);
         if (criterion.length > 3) {
           this.locationList$ = this.weatherService.getLocation(criterion);
         }

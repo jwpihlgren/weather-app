@@ -1,28 +1,31 @@
-<div class="flex column space-between full-width">
-    <div class="top flex column">
-        <div class="search">
-            <label [class.hidden]="!hasFocus" class="pv-8" for="location-search"
-                ><h5>Sök efter en ort</h5></label
-            >
-            <input
-                [formControl]="searchControl"
-                (focus)="onFocus($event)"
-                (blur)="onFocus($event)"
-                id="location-search"
-                type="text"
-                list="location-list"
-                [placeholder]="hasFocus ? ' ' : 'Sök efter en ort'"
-                minlength="3"
-            />
-        </div>
-        <ul id="location-list" [class.hidden]="!hasFocus">
-            <li *ngFor="let location of locationList">
-                <a
-                    href="#"
-                    id="{{ location.name }}"
-                    (mousedown)="onWeatherRequest($event)"
-                    >{{ location.name }}</a
-                >
-            </li>
-        </ul>
-    </div>
+
+<label [class.hidden]="!hasFocus" class="pv-8" for="location-search"
+    ><h5>Sök efter en ort</h5>
+</label>
+<div class="input-field">
+<input
+    [formControl]="searchControl"
+    (focus)="onFocus($event)"
+    (blur)="onFocus($event)"
+    id="location-search"
+    type="text"
+    list="location-list"
+    [placeholder]="hasFocus ? ' ' : 'Sök efter en ort'"
+    minlength="3"
+>
+    <button type="button"
+    (mousedown)="onRemove($event)"
+        >
+        <i [class.hidden]="!hasFocus" class="fas fa-times"></i>
+    </button>
+</div>
+<ul id="location-list" [class.hidden]="!hasFocus">
+    <li *ngFor="let location of locationList">
+        <a
+            href="#"
+            id="{{ location.name }}"
+            (mousedown)="onWeatherRequest($event)"
+            >{{ location.name }}</a
+        >
+    </li>
+</ul>
