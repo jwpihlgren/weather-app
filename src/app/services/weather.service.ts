@@ -18,7 +18,6 @@ export class WeatherService {
 
   getWeather(query: string): Observable<WeatherModel> {
     return this.http.get<any>(this.weatherUrl + query).pipe(map(res => {
-      console.log(res.current.condition.code)
       const data: WeatherModel = {
         locationName: res.location.name,
         currentTempC: res.current.temp_c,

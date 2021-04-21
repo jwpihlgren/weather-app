@@ -1,5 +1,5 @@
 
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewChildren } from '@angular/core';
 import { Observable} from 'rxjs';
 import { WeatherService } from 'app/services/weather.service';
 import { BackgroundImageService } from 'app/services/background-image.service';
@@ -7,6 +7,7 @@ import { WeatherModel } from 'app/models/weather.model';
 import { AfterViewInit } from '@angular/core';
 import { DegreeUnit } from 'app/enums/degree-units.enum';
 import { WindspeedUnit } from 'app/enums/windspeed-units.enum';
+import { CurrentItemComponent } from '../current-item/current-item.component';
 
 
 
@@ -20,6 +21,7 @@ export class WeatherContainerComponent implements AfterViewInit{
   constructor(
     private weatherService: WeatherService, 
     private backgroundImageService: BackgroundImageService,
+    private elementRef: ElementRef
   ) { }
 
 
@@ -38,6 +40,7 @@ export class WeatherContainerComponent implements AfterViewInit{
   locationList$: Observable<string[]> = new Observable<string[]>();
   searchHasFocus: boolean = false;
 
+
   ngAfterViewInit(): void {
     this.weatherObject$ = this.weatherService.getWeather(this.defaultLocation);
   }
@@ -50,9 +53,10 @@ export class WeatherContainerComponent implements AfterViewInit{
 
 
   weatherRequest(event): void {  
-    event.preventDefault();
     this.locationList$ = new Observable<string[]>();
     this.weatherObject$ = this.weatherService.getWeather(event.target.id + "");
+    console.log(this.elementRef)
+    if(this.elementRef) this.elementRef.nativeElement.focus();
   }
 
   locationRequest(criterion: string): void {

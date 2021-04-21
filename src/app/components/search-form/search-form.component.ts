@@ -35,11 +35,15 @@ export class SearchFormComponent implements OnInit {
    onFocus(event: Event): void {
     if(event.type === 'focus') this.hasFocus = true;
     if(event.type === 'blur') this.hasFocus = false;
-    this.focusRequest$.emit(this.hasFocus);
+    /* this.focusRequest$.emit(this.hasFocus); */
   }
 
-  onWeatherRequest(event: Event): void {
-    this.weatherRequest$.emit(event)
+  onWeatherRequest(event: any): void {
+    console.log(event.type)
+    event.preventDefault();
+    this.weatherRequest$.emit(event);
+    this.searchControl.setValue(event.target.id);
+    this.hasFocus = false;
 
   }
 
