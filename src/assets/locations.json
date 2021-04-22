@@ -1,14 +1,14 @@
 [
     {
-    "title": "gothenburg",
-    "location_type": "city",
-    "latt_long": "34.123, 23.231",
-    "woeid": 45564
+        "title": "gothenburg",
+        "location_type": "city",
+        "latt_long": "34.123, 23.231",
+        "woeid": 45564
     },
     {
-    "title": "stockholm",
-    "location_type": "city",
-    "latt_long": "34.123, 23.231",
-    "woeid": 45564
+        "title": "stockholm",
+        "location_type": "city",
+        "latt_long": "34.123, 23.231",
+        "woeid": 45564
     }
 ]

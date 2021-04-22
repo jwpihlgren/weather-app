@@ -1,0 +1,116 @@
+<ng-container
+    *ngIf="{
+        weatherObject: weatherObject$ | async,
+        locationList: locationList$ | async
+    } as data"
+>
+    <div
+        class="background-wrapper"
+        *ngIf="data.weatherObject; else loadingBackground"
+    >
+        <div
+            class="background"
+            [ngStyle]="{
+                'background-image': getBackgroundUrl(data.weatherObject.code)
+            }"
+        ></div>
+    </div>
+
+    <div class="flex column space-between full-width align-center">
+        <app-search-form
+            [locationList]="data.locationList"
+            [hasFocus]="searchHasFocus"
+            (focusRequest$)="onFocus($event)"
+            (locationRequest$)="locationRequest($event)"
+            (weatherRequest$)="weatherRequest($event)"
+        ></app-search-form>
+
+        <app-current-item
+            class="center mv-16"
+            *ngIf="data.weatherObject; else loadingCurrent"
+            [data]="data.weatherObject"
+            [units]="units"
+        ></app-current-item>
+
+        <div
+            *ngIf="data.weatherObject; else loadingForecast"
+            class="flex mv-16 row space-around full-width"
+        >
+            <app-forecast-item
+                *ngFor="let forecastDay of data.weatherObject.forecast"
+                class="flex column background-on-picture text-on-black p-8"
+                [data]="forecastDay"
+                [units]="units"
+            ></app-forecast-item>
+        </div>
+
+        <!-- FOOTER -->
+        <div
+            class="center full-width background-on-picture text-on-black thin-text p-16 mv-16"
+        >
+            Powered by
+            <a
+                href="https://www.weatherapi.com/"
+                target="_blank"
+                title="Weather API"
+                >WeatherAPI.com</a
+            >
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #loadingBackground>
+    <div class="background-wrapper">
+        <div
+            class="background"
+            [ngStyle]="{
+                'background-image': getBackgroundUrl(1000)
+            }"
+        ></div>
+    </div>
+</ng-template>
+
+<ng-template #loadingCurrent>
+    <div class="center">
+        <!-- Main -->
+        <h4 class="align-center mv-16">Name</h4>
+        <h1 class="align-center mv-16">X</h1>
+        <h4 class="align-center mv-16">xxxxxxx</h4>
+        <!-- Data points -->
+        <div class="flex row space-between">
+            <div class="flex column p-8">
+                <h5 class="p-8">MIN/MAX</h5>
+                <h4>Y / X</h4>
+            </div>
+            <div class="flex column p-8">
+                <h5 class="p-8">Vindhastighet</h5>
+                <h4 class="p-8">X m/s</h4>
+            </div>
+
+            <div class="flex column p-8">
+                <h5 class="p-8">Vindriktning</h5>
+                <h4 class="p-8">XYZ</h4>
+            </div>
+
+            <div class="flex column p-8">
+                <h5 class="p-8">Luftfuktighet</h5>
+                <h4 class="p-8">X %</h4>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #loadingForecast>
+    <div class="top">
+        <div class="flex row space-around">
+            <div
+                *ngFor="let day of forecastDayRange"
+                class="wrapper background-on-picture text-on-black"
+            >
+                <span class="label p-8"> yyy - mm - dd </span>
+                <span>icon</span>
+                <span class="thin-text p-8">Y / Y</span>
+            </div>
+        </div>
+    </div>
+</ng-template>

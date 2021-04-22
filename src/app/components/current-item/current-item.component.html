@@ -1,0 +1,43 @@
+<!-- Main -->
+<h4 class="align-center mv-16">
+    {{ data.locationName }}
+</h4>
+<h1 class="align-center mv-16">
+    {{ data.currentTempC | convertDegreeUnit: units.degreeUnit }}
+</h1>
+<h4 class="align-center mv-16">
+    {{ data.condition }}
+</h4>
+<!-- Data points -->
+<div class="flex row space-between">
+    <div class="flex column p-8">
+        <h5 class="p-8">MIN/MAX</h5>
+        <h4 class="p-8">
+            {{ data.minTempC | convertDegreeUnit: units.degreeUnit }}
+            /
+            {{ data.maxTempC | convertDegreeUnit: units.degreeUnit }}
+        </h4>
+    </div>
+    <div class="flex column p-8">
+        <h5 class="p-8">Vindhastighet</h5>
+        <h4 class="p-8">
+            {{ data.windspeed | convertWindspeedUnit: units.windspeedUnit }}
+        </h4>
+    </div>
+
+    <div class="flex column p-8">
+        <h5 class="p-8">Vindriktning</h5>
+        <h4 class="p-8">
+            {{ data.windDirection }}
+        </h4>
+    </div>
+
+    <div class="flex column p-8">
+        <h5 class="p-8">Luftfuktighet</h5>
+        <h4 class="p-8">{{ data.humidity }}%</h4>
+    </div>
+</div>
+<!-- Updated -->
+<div class="flex row justify-end thin-text mv-16">
+    Senast uppdaterad: {{ data.lastUpdated }}
+</div>

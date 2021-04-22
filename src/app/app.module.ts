@@ -1,32 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app.component'
 
-import { HttpClientModule } from '@angular/common/http';
-import { WeatherContainerComponent } from './weather-container/weather-container.component';
-import { AsFahrenheitPipe } from './pipes/as-fahrenheit.pipe';
-import { AsMetersPerSecondPipe } from './pipes/as-meters-per-second.pipe';
-import { AsMilesPerHourPipe } from './pipes/as-miles-per-hour.pipe';
-import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
+import { WeatherContainerComponent } from './components/weather-container/weather-container.component'
 
+import { ReactiveFormsModule } from '@angular/forms'
+import { SearchFormComponent } from './components/search-form/search-form.component'
+import { ForecastItemComponent } from './components/forecast-item/forecast-item.component'
+import { CurrentItemComponent } from './components/current-item/current-item.component'
+import { ConvertDegreeUnitPipe } from './pipes/convert-degree-unit'
+import { ConvertWindspeedUnitPipe } from './pipes/convert-windspeed-unit.pipe'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    WeatherContainerComponent,
-    AsFahrenheitPipe,
-    AsMetersPerSecondPipe,
-    AsMilesPerHourPipe,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        WeatherContainerComponent,
+        SearchFormComponent,
+        ForecastItemComponent,
+        CurrentItemComponent,
+        ConvertDegreeUnitPipe,
+        ConvertWindspeedUnitPipe,
+    ],
+    imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

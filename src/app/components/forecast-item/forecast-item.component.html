@@ -1,0 +1,6 @@
+<span class="label p-8">{{ data.date }} </span>
+<img class="p-8" src="{{ data.iconUrl }}" />
+<span class="thin-text p-8">
+    {{ data.minTempC | convertDegreeUnit: units.degreeUnit }} /
+    {{ data.maxTempC | convertDegreeUnit: units.degreeUnit }}
+</span>
