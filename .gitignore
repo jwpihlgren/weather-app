@@ -49,4 +49,5 @@ Thumbs.db
 /src/environments/
 .env
 
+# Distributions
 /dist

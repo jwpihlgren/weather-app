@@ -11,8 +11,8 @@ import { environment } from 'environments/environment'
 export class WeatherService {
     constructor(private http: HttpClient) {}
 
-    private weatherUrl: string = `http://api.weatherapi.com/v1/forecast.json?key=${environment.WEATHER_API_KEY}&lang=sv&days=3&q=`
-    private locationUrl: string = `http://api.weatherapi.com/v1/search.json?key=${environment.WEATHER_API_KEY}&lang=sv&aqi=no&alerts=yes&q=`
+    private weatherUrl: string = `https://api.weatherapi.com/v1/forecast.json?key=${environment.WEATHER_API_KEY}&lang=sv&days=3&q=`
+    private locationUrl: string = `https://api.weatherapi.com/v1/search.json?key=${environment.WEATHER_API_KEY}&lang=sv&aqi=no&alerts=yes&q=`
     private DEFAULT_LOCATION = 'Partille, Vastra Gotaland, Sweden'
 
     getWeather(query: string): Observable<WeatherModel> {
