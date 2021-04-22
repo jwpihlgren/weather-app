@@ -1,6 +1,3 @@
-<!-- BACKGROUND  -->
-
-
 <ng-container
     *ngIf="{
         weatherObject: weatherObject$ | async,
@@ -19,14 +16,12 @@
         ></div>
     </div>
 
-    <!-- CONTENT -->
     <div class="flex column space-between full-width align-center">
-
-        <app-search-form 
-            [locationList]="data.locationList" 
-            [hasFocus]="searchHasFocus" 
-            (focusRequest$)="onFocus($event)" 
-            (locationRequest$)="locationRequest($event)" 
+        <app-search-form
+            [locationList]="data.locationList"
+            [hasFocus]="searchHasFocus"
+            (focusRequest$)="onFocus($event)"
+            (locationRequest$)="locationRequest($event)"
             (weatherRequest$)="weatherRequest($event)"
         ></app-search-form>
 
@@ -38,30 +33,31 @@
         ></app-current-item>
 
         <div
-            *ngIf="data.weatherObject; else loadingForecast" 
-            class="flex mv-16 row space-around full-width "
-            >
+            *ngIf="data.weatherObject; else loadingForecast"
+            class="flex mv-16 row space-around full-width"
+        >
             <app-forecast-item
                 *ngFor="let forecastDay of data.weatherObject.forecast"
-                class="flex column background-on-picture text-on-black p-8" 
+                class="flex column background-on-picture text-on-black p-8"
                 [data]="forecastDay"
                 [units]="units"
             ></app-forecast-item>
         </div>
-   
-    <!-- FOOTER -->
-    <div class="center full-width background-on-picture text-on-black thin-text p-16 mv-16">
-        Powered by
-        <a
-            href="https://www.weatherapi.com/"
-            target="_blank"
-            title="Weather API"
-            >WeatherAPI.com</a
-        >
-    </div>
-</div>
-</ng-container>
 
+        <!-- FOOTER -->
+        <div
+            class="center full-width background-on-picture text-on-black thin-text p-16 mv-16"
+        >
+            Powered by
+            <a
+                href="https://www.weatherapi.com/"
+                target="_blank"
+                title="Weather API"
+                >WeatherAPI.com</a
+            >
+        </div>
+    </div>
+</ng-container>
 
 <ng-template #loadingBackground>
     <div class="background-wrapper">
@@ -111,7 +107,6 @@
                 *ngFor="let day of forecastDayRange"
                 class="wrapper background-on-picture text-on-black"
             >
-
                 <span class="label p-8"> yyy - mm - dd </span>
                 <span>icon</span>
                 <span class="thin-text p-8">Y / Y</span>
@@ -119,5 +114,3 @@
         </div>
     </div>
 </ng-template>
-
-

@@ -1,7 +1,7 @@
-import { CurrentItem } from './current-item.model';
+import { CurrentItem } from './current-item.model'
 
 describe('CurrentItem', () => {
-  it('should create an instance', () => {
-    expect(new CurrentItem()).toBeTruthy();
-  });
-});
+    it('should create an instance', () => {
+        expect(new CurrentItem()).toBeTruthy()
+    })
+})

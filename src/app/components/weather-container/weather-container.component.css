@@ -1,7 +1,7 @@
-:host{
+:host {
     display: flex;
     justify-content: center;
 }
-:host:focus{
-    outline:none;
+:host:focus {
+    outline: none;
 }

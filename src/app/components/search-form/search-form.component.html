@@ -1,21 +1,18 @@
-
 <label [class.hidden]="!hasFocus" class="pv-8" for="location-search"
     ><h5>Sök efter en ort</h5>
 </label>
 <div class="input-field">
-<input
-    [formControl]="searchControl"
-    (focus)="onFocus($event)"
-    (blur)="onFocus($event)"
-    id="location-search"
-    type="text"
-    list="location-list"
-    [placeholder]="hasFocus ? ' ' : 'Sök efter en ort'"
-    minlength="3"
->
-    <button type="button"
-    (mousedown)="onRemove($event)"
-        >
+    <input
+        [formControl]="searchControl"
+        (focus)="onFocus($event)"
+        (blur)="onFocus($event)"
+        id="location-search"
+        type="text"
+        list="location-list"
+        [placeholder]="hasFocus ? ' ' : 'Sök efter en ort'"
+        minlength="3"
+    />
+    <button type="button" (mousedown)="onRemove($event)">
         <i [class.hidden]="!hasFocus" class="fas fa-times"></i>
     </button>
 </div>

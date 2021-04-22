@@ -1,4 +1,4 @@
 export enum DegreeUnit {
-  celcius = 'CELCIUS',
-  fahrenheit = 'FAHRENHEIT',
+    celcius = 'CELCIUS',
+    fahrenheit = 'FAHRENHEIT',
 }

@@ -1,4 +1,4 @@
 export enum WindspeedUnit {
-    mps = "METERS-PER-SECOND",
-    mph = "MILES-PER-HOUR"
+    mps = 'METERS-PER-SECOND',
+    mph = 'MILES-PER-HOUR',
 }

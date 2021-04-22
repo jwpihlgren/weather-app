@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { CurrentItemComponent } from './current-item.component';
+import { CurrentItemComponent } from './current-item.component'
 
 describe('CurrentItemComponent', () => {
-  let component: CurrentItemComponent;
-  let fixture: ComponentFixture<CurrentItemComponent>;
+    let component: CurrentItemComponent
+    let fixture: ComponentFixture<CurrentItemComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CurrentItemComponent ]
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [CurrentItemComponent],
+        }).compileComponents()
     })
-    .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CurrentItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(CurrentItemComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
+    })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    it('should create', () => {
+        expect(component).toBeTruthy()
+    })
+})
