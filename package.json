@@ -5,7 +5,7 @@
         "ng": "ng",
         "config": "ts-node ./src/assets/scripts/setEnv.ts",
         "start": "npm run config -- --environment=dev && ng serve -o --host 0.0.0.0",
-        "build": "npm run config -- --environment=prod ng build --prod",
+        "build": "npm run config -- --environment=prod ng build --prod --base-href https://jwpihlgren.github.io/weather-app/",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"

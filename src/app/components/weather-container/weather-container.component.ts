@@ -6,7 +6,6 @@ import { WeatherModel } from 'app/models/weather.model'
 import { AfterViewInit } from '@angular/core'
 import { DegreeUnit } from 'app/enums/degree-units.enum'
 import { WindspeedUnit } from 'app/enums/windspeed-units.enum'
-import { CurrentItemComponent } from '../current-item/current-item.component'
 
 @Component({
     selector: 'app-weather-container',

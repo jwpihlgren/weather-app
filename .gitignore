@@ -48,3 +48,5 @@ Thumbs.db
 # Environment secrets
 /src/environments/
 .env
+
+/dist
