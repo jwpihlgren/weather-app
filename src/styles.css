@@ -5,7 +5,6 @@
     font-weight: normal;
     width: 100%;
     box-sizing: border-box;
-    
 }
 
 body {
@@ -51,7 +50,6 @@ h5 {
 }
 
 p {
-
     font-size: 16px;
     line-height: 19px;
     letter-spacing: 0.02em;
@@ -64,11 +62,6 @@ small {
     letter-spacing: 0.05em;
 }
 
-
 .hidden {
     visibility: hidden;
 }
-
-
-
-

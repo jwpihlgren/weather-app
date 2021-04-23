@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 
 import { AppComponent } from './app.component'
-import {APP_BASE_HREF} from '@angular/common';
+import { APP_BASE_HREF } from '@angular/common'
 
 import { HttpClientModule } from '@angular/common/http'
 import { WeatherContainerComponent } from './components/weather-container/weather-container.component'
@@ -14,7 +14,7 @@ import { CurrentItemComponent } from './components/current-item/current-item.com
 import { ConvertDegreeUnitPipe } from './pipes/convert-degree-unit'
 import { ConvertWindspeedUnitPipe } from './pipes/convert-windspeed-unit.pipe'
 /* import { environment} from 'environments/environment.prod' */
-import { environment} from 'environments/environment'
+import { environment } from 'environments/environment'
 
 @NgModule({
     declarations: [
@@ -27,7 +27,7 @@ import { environment} from 'environments/environment'
         ConvertWindspeedUnitPipe,
     ],
     imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
-    providers: [{provide: APP_BASE_HREF, useValue: environment.BASE_URL}],
+    providers: [{ provide: APP_BASE_HREF, useValue: environment.BASE_URL }],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

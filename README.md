@@ -26,7 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-
 # Set up
 
 Toggle comments on the following lines
@@ -35,7 +34,7 @@ Toggle comments on the following lines
 and
 `import { environment} from 'environments/environment'`
 
- in [app.module.ts]
+in [app.module.ts]
 
 during development and build to production
 

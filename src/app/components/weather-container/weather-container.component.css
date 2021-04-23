@@ -9,14 +9,14 @@
     outline: none;
 }
 
-section{
-    min-width: 300px ;
+section {
+    min-width: 300px;
     max-width: 600px;
     height: 100vh;
     max-height: 800px;
     display: flex;
     flex-direction: column;
-    justify-content:space-around
+    justify-content: space-around;
 }
 
 article {
@@ -53,15 +53,13 @@ footer {
     padding: 16px;
 }
 
-footer a:visited{
+footer a:visited {
     color: darkgray;
-
 }
-footer a:hover{
+footer a:hover {
     color: gray;
-
 }
 
-footer h5{
+footer h5 {
     display: inline;
 }
