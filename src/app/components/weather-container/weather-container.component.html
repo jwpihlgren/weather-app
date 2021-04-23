@@ -16,7 +16,7 @@
         ></div>
     </div>
 
-    <div class="flex column space-between full-width align-center">
+    <section>
         <app-search-form
             [locationList]="data.locationList"
             [hasFocus]="searchHasFocus"
@@ -26,38 +26,32 @@
         ></app-search-form>
 
         <app-current-item
-            class="center mv-16"
             *ngIf="data.weatherObject; else loadingCurrent"
             [data]="data.weatherObject"
             [units]="units"
         ></app-current-item>
 
-        <div
-            *ngIf="data.weatherObject; else loadingForecast"
-            class="flex mv-16 row space-around full-width"
-        >
+        <article *ngIf="data.weatherObject; else loadingForecast" class="">
             <app-forecast-item
                 *ngFor="let forecastDay of data.weatherObject.forecast"
-                class="flex column background-on-picture text-on-black p-8"
                 [data]="forecastDay"
                 [units]="units"
             ></app-forecast-item>
-        </div>
+        </article>
 
-        <!-- FOOTER -->
-        <div
-            class="center full-width background-on-picture text-on-black thin-text p-16 mv-16"
-        >
-            Powered by
+        <footer>
+            <small>Powered by </small>
             <a
                 href="https://www.weatherapi.com/"
                 target="_blank"
                 title="Weather API"
-                >WeatherAPI.com</a
-            >
-        </div>
-    </div>
+                ><h5>WeatherAPI.com</h5>
+            </a>
+        </footer>
+    </section>
 </ng-container>
+
+<!-- Loading -->
 
 <ng-template #loadingBackground>
     <div class="background-wrapper">

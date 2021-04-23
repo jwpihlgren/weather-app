@@ -1,7 +1,65 @@
 :host {
     display: flex;
     justify-content: center;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 :host:focus {
     outline: none;
+}
+
+section {
+    min-width: 300px;
+    max-width: 600px;
+    height: 100vh;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/** Background */
+.background-wrapper {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+}
+.background {
+    /* Add the blur effect */
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+
+    /* Full height */
+    width: 100%;
+    height: 100vh;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer {
+    color: white;
+    background: rgba(39, 39, 39, 0.6);
+    border-radius: 1px;
+    padding: 16px;
+}
+
+footer a:visited {
+    color: darkgray;
+}
+footer a:hover {
+    color: gray;
+}
+
+footer h5 {
+    display: inline;
 }
