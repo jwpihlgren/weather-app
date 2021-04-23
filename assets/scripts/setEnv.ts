@@ -43,7 +43,11 @@ const environmentFileContent = `
   export const environment = {
     production: ${isProduction},
     WEATHER_API_KEY: '${process.env.WEATHER_API_KEY}',
-    BASE_URL: '${isProduction ? process.env.PRODUCTION_BASE_URL : process.env.DEVELOPMENT_BASE_URL}'
+    BASE_URL: '${
+        isProduction
+            ? process.env.PRODUCTION_BASE_URL
+            : process.env.DEVELOPMENT_BASE_URL
+    }'
   };
 `
 
