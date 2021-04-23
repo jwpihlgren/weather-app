@@ -53,11 +53,16 @@ footer {
     padding: 16px;
 }
 
-footer a:visited {
-    color: darkgray;
+footer a {
+    color: gray
 }
+
 footer a:hover {
-    color: gray;
+    color: silver;
+}
+
+footer a:visited {
+    color: silver;
 }
 
 footer h5 {
