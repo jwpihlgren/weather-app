@@ -67,43 +67,40 @@
 <ng-template #loadingCurrent>
     <div class="center">
         <!-- Main -->
-        <h4 class="align-center mv-16">Name</h4>
-        <h1 class="align-center mv-16">X</h1>
-        <h4 class="align-center mv-16">xxxxxxx</h4>
+        <h4>Templateville</h4>
+        <h1>4</h1>
+        <h4>Klart</h4>
         <!-- Data points -->
-        <div class="flex row space-between">
-            <div class="flex column p-8">
-                <h5 class="p-8">MIN/MAX</h5>
-                <h4>Y / X</h4>
+        <div>
+            <div>
+                <h5>MIN/MAX</h5>
+                <h4>0 / 22</h4>
             </div>
-            <div class="flex column p-8">
-                <h5 class="p-8">Vindhastighet</h5>
-                <h4 class="p-8">X m/s</h4>
-            </div>
-
-            <div class="flex column p-8">
-                <h5 class="p-8">Vindriktning</h5>
-                <h4 class="p-8">XYZ</h4>
+            <div>
+                <h5>Vindhastighet</h5>
+                <h4>6 m/s</h4>
             </div>
 
-            <div class="flex column p-8">
-                <h5 class="p-8">Luftfuktighet</h5>
-                <h4 class="p-8">X %</h4>
+            <div>
+                <h5>Vindriktning</h5>
+                <h4>NSW</h4>
+            </div>
+
+            <div>
+                <h5>Luftfuktighet</h5>
+                <h4>50 %</h4>
             </div>
         </div>
     </div>
 </ng-template>
 
 <ng-template #loadingForecast>
-    <div class="top">
-        <div class="flex row space-around">
-            <div
-                *ngFor="let day of forecastDayRange"
-                class="wrapper background-on-picture text-on-black"
-            >
-                <span class="label p-8"> yyy - mm - dd </span>
+    <div>
+        <div>
+            <div *ngFor="let day of forecastDayRange">
+                <span> 1970 - 01 - 01 </span>
                 <span>icon</span>
-                <span class="thin-text p-8">Y / Y</span>
+                <span>0 / 22</span>
             </div>
         </div>
     </div>
