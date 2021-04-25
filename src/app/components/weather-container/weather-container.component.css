@@ -69,3 +69,9 @@ footer a:visited {
 footer h5 {
     display: inline;
 }
+
+@media (min-width: 1080px) {
+    section {
+        max-height: 800px;
+    }
+}
