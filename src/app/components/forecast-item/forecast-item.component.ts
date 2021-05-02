@@ -11,6 +11,7 @@ export class ForecastItemComponent implements OnInit {
 
     @Input() data: ForecastModel
     @Input() units: any
+    @Input() loading: boolean = false;
 
     ngOnInit(): void {}
 }

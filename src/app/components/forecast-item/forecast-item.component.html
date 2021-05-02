@@ -1,6 +1,16 @@
-<h5>{{ data.date }}</h5>
-<img src="{{ data.iconUrl }}" />
-<small>
-    {{ data.minTempC | convertDegreeUnit: units.degreeUnit }} /
-    {{ data.maxTempC | convertDegreeUnit: units.degreeUnit }}
-</small>
+
+<ng-container *ngIf="!loading; else shimmer">
+    <h5>{{ data.date }}</h5>
+    <img src="{{ data.iconUrl }}" />
+    <small>
+        {{ data.minTempC | convertDegreeUnit: units.degreeUnit }} /
+        {{ data.maxTempC | convertDegreeUnit: units.degreeUnit }}
+    </small>
+</ng-container>
+
+<ng-template #shimmer>
+    <div class="small animate"></div>
+    <div class="box animate"></div>
+    <div class="small animate"></div>
+
+</ng-template>

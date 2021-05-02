@@ -31,7 +31,7 @@
             [units]="units"
         ></app-current-item>
 
-        <article *ngIf="data.weatherObject; else loadingForecast" class="">
+        <article *ngIf="data.weatherObject; else loadingForecast">
             <app-forecast-item
                 *ngFor="let forecastDay of data.weatherObject.forecast"
                 [data]="forecastDay"
@@ -65,43 +65,12 @@
 </ng-template>
 
 <ng-template #loadingCurrent>
-    <div class="center">
-        <!-- Main -->
-        <h4>Templateville</h4>
-        <h1>4</h1>
-        <h4>Klart</h4>
-        <!-- Data points -->
-        <div>
-            <div>
-                <h5>MIN/MAX</h5>
-                <h4>0 / 22</h4>
-            </div>
-            <div>
-                <h5>Vindhastighet</h5>
-                <h4>6 m/s</h4>
-            </div>
-
-            <div>
-                <h5>Vindriktning</h5>
-                <h4>NSW</h4>
-            </div>
-
-            <div>
-                <h5>Luftfuktighet</h5>
-                <h4>50 %</h4>
-            </div>
-        </div>
-    </div>
+    <app-current-item [loading]="true"></app-current-item>
 </ng-template>
 
+
 <ng-template #loadingForecast>
-    <div>
-        <div>
-            <div *ngFor="let day of forecastDayRange">
-                <span> 1970 - 01 - 01 </span>
-                <span>icon</span>
-                <span>0 / 22</span>
-            </div>
-        </div>
-    </div>
+    <article>
+        <app-forecast-item *ngFor="let day of forecastDayRange" [loading]="true"></app-forecast-item>
+    </article>
 </ng-template>

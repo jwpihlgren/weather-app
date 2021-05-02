@@ -1,5 +1,4 @@
 :host {
-    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -34,6 +33,7 @@ section:nth-of-type(2) > * {
 small {
     text-align: right;
     padding: 16px;
+    display: block;
 }
 
 h1 {
@@ -47,3 +47,35 @@ h4 {
 h5 {
     padding-bottom: 4px;
 }
+
+.small{
+    width: 200px;
+    height: 24px;
+}
+
+.medium {
+    width: 100px;
+    height: 48px;
+}
+
+.box{
+    width: 48px;
+    height: 48px;
+}
+
+.currentShimmer {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
+    height: 150px;
+}
+
+.updatedShimmer {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 16px;
+}
+
+
