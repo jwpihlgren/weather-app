@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="!loading; else currentShimmer">
     <h4>
         {{ data.locationName }}
     </h4>
@@ -9,7 +9,16 @@
         {{ data.condition }}
     </h4>
 </section>
-<section>
+
+<ng-template #currentShimmer>
+    <section class="currentShimmer">
+        <div class="small animate"></div>
+        <div class="medium animate"></div>
+        <div class="small animate"></div>
+    </section>
+</ng-template>
+
+<section *ngIf="!loading; else forecastShimmer">
     <div>
         <h5>MIN/MAX</h5>
         <h4>
@@ -37,6 +46,23 @@
         <h4>{{ data.humidity }}%</h4>
     </div>
 </section>
-<!-- Updated -->
 
-<small> Senast uppdaterad: {{ data.lastUpdated }}</small>
+<ng-template #forecastShimmer>
+    <section>
+        <div><div class="medium animate"></div></div>
+        <div><div class="medium animate"></div></div>
+        <div><div class="medium animate"></div></div>
+        <div><div class="medium animate"></div></div>
+    </section>
+</ng-template>
+
+
+<section *ngIf="!loading; else updatedShimmer">
+    <small> Senast uppdaterad: {{ data.lastUpdated }}</small>
+</section>
+
+<ng-template #updatedShimmer>
+    <section class="updatedShimmer">
+        <div class="small animate"></div>
+    </section>
+</ng-template>

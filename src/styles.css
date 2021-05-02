@@ -70,3 +70,22 @@ small {
 .hidden {
     visibility: hidden;
 }
+
+/* Classes for shimmer effect on loading items */
+
+
+.animate {
+    border-radius: 5px;
+    animation : shimmer 4s infinite;
+    background: linear-gradient(to right, #3a3a3a 4%, #6e6e6e 25%, #3a3a3a 36%);
+    background-size: 1000px 100%;
+ }
+
+ @keyframes shimmer {
+    0% {
+      background-position: -600px 0;
+    }
+    100% {
+      background-position: 600px 0;
+    }
+  }
