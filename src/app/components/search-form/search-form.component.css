@@ -78,7 +78,6 @@ li {
 li:hover {
     background: rgb(204, 204, 204);
     cursor: pointer;
-    
 }
 a {
     color: inherit;
@@ -97,5 +96,4 @@ a:hover {
     ul {
         overflow: hidden;
     }
-
 }

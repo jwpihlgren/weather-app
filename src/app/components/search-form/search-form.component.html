@@ -17,12 +17,12 @@
     </button>
 </div>
 <ul id="location-list" [class.hidden]="!hasFocus">
-    <li *ngFor="let location of locationList">
-        <a
-            href="#"
-            id="{{ location.name }}"
-            (mousedown)="onWeatherRequest($event)"
-            >{{ location.name }}</a
-        >
-    </li>
+        <li *ngFor="let location of locationList">
+            <a
+                href="#"
+                id="{{ location.name }}"
+                (mousedown)="onWeatherRequest($event)"
+                >{{ location.name }}</a
+            >
+        </li>
 </ul>

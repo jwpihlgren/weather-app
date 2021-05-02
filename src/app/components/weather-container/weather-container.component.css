@@ -11,6 +11,7 @@
 }
 
 section {
+    padding-top: 16px;
     min-width: 300px;
     max-width: 600px;
     height: 100%;

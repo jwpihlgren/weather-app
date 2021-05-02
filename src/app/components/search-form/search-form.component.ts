@@ -14,7 +14,7 @@ export class SearchFormComponent implements OnInit {
     @Output()
     focusRequest$: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>()
 
-    @Input() locationList: any[] = []
+    @Input() locationList: any[]
     @Output()
     locationRequest$: EventEmitter<string> = new EventEmitter<string>()
 

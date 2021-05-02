@@ -43,9 +43,9 @@ export class WeatherContainerComponent implements AfterViewInit {
     }
 
     onFocus(event: FocusEvent): void {
-        if (event.type === 'focus') this.searchHasFocus = true
-        else if (event.type === 'blur') this.searchHasFocus = false
-        else console.log('Wrong event type')
+        if (event.type === 'focus') this.searchHasFocus = true;
+        else if (event.type === 'blur') this.searchHasFocus = false;
+        else console.log('Wrong event type');
     }
 
     weatherRequest(event): void {
@@ -58,8 +58,10 @@ export class WeatherContainerComponent implements AfterViewInit {
 
     locationRequest(criterion: string): void {
         if (criterion.length > 3) {
-            this.locationList$ = this.weatherService.getLocation(criterion)
-        } else this.locationList$ = new Observable<string[]>()
+            this.locationList$ = this.weatherService.getLocation(criterion);
+        } else {
+            this.locationList$ = new Observable<string[]>();
+            }
     }
 
     getBackgroundUrl(code: number): string {
