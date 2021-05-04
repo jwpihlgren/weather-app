@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core'
     providedIn: 'root',
 })
 export class BackgroundImageService {
-    getBackgroundUrl(code: number): string {
+    getBackgroundUrl(code: number, resolution:string): string {
         /*  console.log('call') */
-        return `./assets/images/weather-states/${
+        return `./assets/images/weather-states/${resolution}/${
             this.codes[`${code}`]
         }-${this.getTimeofDay()}`
     }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, ViewChildren } from '@angular/core'
+import { Component, ElementRef, HostListener} from '@angular/core'
 import { Observable } from 'rxjs'
 import { WeatherService } from 'app/services/weather.service'
 import { BackgroundImageService } from 'app/services/background-image.service'
@@ -19,6 +19,26 @@ export class WeatherContainerComponent implements AfterViewInit {
         private rootElementRef: ElementRef
     ) {}
 
+    imageSizes: any = {
+        "4K": "2550x1440",
+        "HD": "1920x1080",
+        "SD": "720x1280"
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        const innerWidth = window.innerWidth;
+        console.log(innerWidth)
+        if (innerWidth > 1920) this.backgroundImageSize = this.imageSizes["4K"];
+        if (innerWidth > 720 && innerWidth < 1920) this.backgroundImageSize = this.imageSizes["HD"];
+        if (innerWidth <= 720) this.backgroundImageSize = this.imageSizes["SD"];
+    }
+
+    backgroundImageSize: string;
+
+
+
+
     /* The units to display numeric values with */
     units = {
         degreeUnit: DegreeUnit.celcius,
@@ -26,20 +46,24 @@ export class WeatherContainerComponent implements AfterViewInit {
     }
 
     /* Array to use to render forecast items until we get a reponse*/
-    forecastDayRange: Array<number> = [1, 2, 3]
+    forecastDayRange: Array<number> = [1, 2, 3];
 
     weatherObject$: Observable<WeatherModel>
-    defaultLocation: string = 'Partille, Vastra Gotaland, Sweden'
+    defaultLocation: string = 'Partille, Vastra Gotaland, Sweden';
 
-    locationList$: Observable<string[]> = new Observable<string[]>()
-    searchHasFocus: boolean = false
+    locationList$: Observable<string[]> = new Observable<string[]>();
+    searchHasFocus: boolean = false;
 
-    backgroundCode: number
+    backgroundCode: number;
 
+    ngOnInit(): void {this.backgroundImageSize = this.imageSizes["HD"]};
+
+ 
     ngAfterViewInit(): void {
         this.weatherObject$ = this.weatherService.getWeather(
             this.defaultLocation
-        )
+        );
+        
     }
 
     onFocus(event: FocusEvent): void {
@@ -65,6 +89,6 @@ export class WeatherContainerComponent implements AfterViewInit {
     }
 
     getBackgroundUrl(code: number): string {
-        return `url(${this.backgroundImageService.getBackgroundUrl(code)}.jpg)`
+        return `url(${this.backgroundImageService.getBackgroundUrl(code, this.backgroundImageSize)}.jpg)`
     }
 }
