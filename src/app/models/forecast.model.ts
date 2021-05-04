@@ -3,4 +3,5 @@ export class ForecastModel {
     minTempC: number
     maxTempC: number
     iconUrl: string
+    iconText: string
 }

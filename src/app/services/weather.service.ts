@@ -36,6 +36,7 @@ export class WeatherService {
                             minTempC: day.day.mintemp_c,
                             maxTempC: day.day.maxtemp_c,
                             iconUrl: day.day.condition.icon,
+                            iconText: day.day.condition.text
                         }
                         return obj
                     }),
