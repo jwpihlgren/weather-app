@@ -12,7 +12,7 @@
         [placeholder]="hasFocus ? ' ' : 'Sök efter en ort'"
         minlength="3"
     />
-    <button type="button" (mousedown)="onRemove($event)">
+    <button type="button" name="removeQuery" (mousedown)="onRemove($event)">
         <i [class.hidden]="!hasFocus" class="fas fa-times"></i>
     </button>
 </div>
