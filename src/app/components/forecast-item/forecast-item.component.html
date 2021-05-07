@@ -1,6 +1,6 @@
 
 <ng-container *ngIf="!loading; else shimmer">
-    <h5>{{ data.date }}</h5>
+    <h5>{{ data.date | date }}</h5>
     <img src="{{ data.iconUrl }}" alt="{{data.iconText}}" />
     <small>
         {{ data.minTempC | convertDegreeUnit: units.degreeUnit }} /
