@@ -14,7 +14,8 @@ import { CurrentItemComponent } from './components/current-item/current-item.com
 import { ConvertDegreeUnitPipe } from './pipes/convert-degree-unit'
 import { ConvertWindspeedUnitPipe } from './pipes/convert-windspeed-unit.pipe'
 /* import { environment} from 'environments/environment.prod' */
-import { environment } from 'environments/environment'
+import { environment } from 'environments/environment';
+import { DatePipe } from './pipes/date.pipe'
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { environment } from 'environments/environment'
         CurrentItemComponent,
         ConvertDegreeUnitPipe,
         ConvertWindspeedUnitPipe,
+        DatePipe,
     ],
     imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
     providers: [{ provide: APP_BASE_HREF, useValue: environment.BASE_URL }],

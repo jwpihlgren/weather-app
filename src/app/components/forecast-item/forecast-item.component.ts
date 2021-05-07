@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { ForecastModel } from 'app/models/forecast.model'
 
+
 @Component({
     selector: 'app-forecast-item',
     templateUrl: './forecast-item.component.html',
